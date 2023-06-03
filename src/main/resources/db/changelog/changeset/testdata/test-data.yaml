@@ -1,0 +1,52 @@
+databaseChangeLog:
+- changeSet:
+      id: 1684999823506-1
+      author: Admin
+      runOnChange: true
+      contexts: test
+      changes:
+        - loadData:
+            columns:
+              - column:
+                  header: id
+                  name: id
+                  type: BIGINT
+              - column:
+                  header: uid
+                  name: uid
+                  type: VARCHAR
+              - column:
+                  header: firstname
+                  name: firstname
+                  type: VARCHAR
+              - column:
+                  header: lastname
+                  name: lastname
+                  type: VARCHAR
+              - column:
+                  header: surname
+                  name: surname
+                  type: VARCHAR
+              - column:
+                  header: position
+                  name: position
+                  type: VARCHAR
+              - column:
+                  header: account
+                  name: account
+                  type: VARCHAR
+              - column:
+                  header: email
+                  name: email
+                  type: VARCHAR
+              - column:
+                  header: status
+                  name: status
+                  type: VARCHAR
+            commentLineStartsWith: '#'
+            encoding: UTF-8
+            file: data/employee.csv
+            quotchar: '"'
+            separator: ';'
+            relativeToChangelogFile: true
+            tableName: employees

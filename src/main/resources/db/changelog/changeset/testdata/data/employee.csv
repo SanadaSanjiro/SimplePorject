@@ -1,0 +1,11 @@
+id;uid;firstname;lastname;surname;position;account;email;status
+1;u0000001;Петр;Петров;Петрович;разработчик;p_petrov;p_petrov@digdes.com;ACTIVE
+2;u0000002;Василий;Васильев;Васильевич;разработчик;v_vasiliev;v_vasiliev@digdes.com;DELETED
+3;u0000003;Николай;Николаев;Николаевич;тимлид;n_nikolaev;n_nikolaev@digdes.com;ACTIVE
+4;u0000004;Александр;Александров;Александрович;тестер;a_alexandrov;a_alexandrov@digdes.com;DELETED
+5;u0000005;Татьяна;Лакшина;Васильевна;тестер;t_lakshina;t_lakshina@digdes.com;ACTIVE
+6;u0000006;Евгения;Новодворская;Ильинична;просто;e_novodvorskaya;e_novodvorskaya@digdes.com;DELETED
+7;u0000007;Александра;Петрова;Николаевна;pr;a_petrova;a_petrova@digdes.com;ACTIVE
+8;u0000008;Василий;Теркин;Васильевич;директор;v_tyorkin;v_tyorkin@digdes.com;DELETED
+9;u0000009;Татьяна;Онегина;Евгеньевна;hq;t_onegina;t_onegina@digdes.com;ACTIVE
+10;u0000010;Зураб;Церетелли;Зурабович;скульптор;z_ceretelli;z_ceretelli@digdes.com;DELETED

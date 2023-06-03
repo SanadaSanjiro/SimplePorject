@@ -26,6 +26,8 @@ public class EmployeeModel {
     private String account;
     @Column(name="email")
     private String eMail;
+    @Column(name="password")
+    private String password;
     @Enumerated(EnumType.STRING)
     private EmployeeStatus status;
 
@@ -33,6 +35,7 @@ public class EmployeeModel {
     public String toString() {
         return "\nEmployee{" +
                 "id=" + id +
+                ", uid='" + uid + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", surName='" + surName + '\'' +

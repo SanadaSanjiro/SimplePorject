@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface EmployeeRepository extends JpaRepository<EmployeeModel, Long>, JpaSpecificationExecutor<EmployeeModel>
 {
-    Optional<EmployeeModel> findByFirstName(String firstName);
+    Optional<EmployeeModel> getByAccount(String account);
 }
