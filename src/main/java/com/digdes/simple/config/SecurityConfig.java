@@ -10,6 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
+    //Бин для создания цепочки аутентификации
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests().anyRequest().authenticated()
@@ -20,6 +21,7 @@ public class SecurityConfig {
                 .build();
     }
 
+    //Бин для кодировки паролей перед записью в базу
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

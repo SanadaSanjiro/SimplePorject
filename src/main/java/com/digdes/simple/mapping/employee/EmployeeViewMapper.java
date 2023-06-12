@@ -1,20 +1,17 @@
 package com.digdes.simple.mapping.employee;
 
-import com.digdes.simple.dto.employee.EmployeeDTO;
 import com.digdes.simple.dto.employee.EmployeeViewDTO;
-import com.digdes.simple.model.EmployeeModel;
+import com.digdes.simple.model.employee.EmployeeModel;
 import org.springframework.util.ObjectUtils;
 
 //Класс для преобразования модели в ДТО для возврата в качестве результатов запроса
+//Передает все поля модели за исключением пароля
 
 public class EmployeeViewMapper {
     public static EmployeeViewDTO map (EmployeeModel model) {
         EmployeeViewDTO dto = new EmployeeViewDTO();
         if (!ObjectUtils.isEmpty(model.getId())) {
             dto.setId(model.getId());
-        }
-        if (!ObjectUtils.isEmpty(model.getUid())) {
-            dto.setUid(model.getUid());
         }
         if (!ObjectUtils.isEmpty(model.getFirstName())) {
             dto.setFirstname(model.getFirstName());

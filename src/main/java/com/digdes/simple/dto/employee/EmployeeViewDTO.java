@@ -8,8 +8,6 @@ import lombok.Data;
 @Schema (description = "Отображаемые данные сотрудника")
 public class EmployeeViewDTO {
     Long id;
-    String uid;
-    @Schema(description = "Имя")
     String firstname;
     @Schema (description = "Фамилия")
     String lastname;

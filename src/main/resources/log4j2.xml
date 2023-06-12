@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Уровень журнала и порядок приоритетов: OFF> FATAL> ERROR> WARN> INFO> DEBUG> TRACE> ALL-->
+<!-- Состояние позади Конфигурации, это используется для установки внутреннего вывода информации самого log4j2,
+вы не можете установить его, если установить трассировку, вы увидите различные подробные выходные данные внутри log4j2-->
+<!-- monitorInterval: Log4j может автоматически обнаруживать и изменять файлы конфигурации, а также переконфигурировать
+себя, устанавливать интервал в секундах-->
+<configuration status="WARN" monitorInterval="1800">
+    <Properties>
+        <!-- Место хранения журнала по умолчанию, здесь задан корневой путь проекта, вы также можете указать абсолютный путь-->
+        <!-- $ {web: rootDir} является корневым путем веб-проекта. Java-проект не имеет этой переменной и должен быть удален,
+         иначе будет сообщено об исключении-->
+        <!--  <property name="basePath">${web:rootDir}/log4j2Logs</property> -->
+        <property name="basePath">./logs</property>
+        <!-- <property name="basePath">d:/qfxSpringMVCMybaitsDemoLogs</property> -->
+
+        <!-- Формат вывода консоли по умолчанию: «% -5level»: уровень журнала, «% l»: вывод полного местоположения ошибки
+        (строчная буква L, поскольку отображается номер строки, что влияет на производительность вывода журнала).-->
+        <property name="console_log_pattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %l - %m%n</property>
+        <!-- Формат вывода файла журнала по умолчанию без вывода номера строки (отображение номера строки повлияет
+        на производительность вывода журнала);% C: верхний регистр, имя класса;% M: имя метода;% m: сообщение об ошибке;
+        % n: новая строка -->
+        <property name="log_pattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %m%n</property>
+
+        <!-- Минимальная единица вырубки по умолчанию для бревна-->
+        <property name="every_file_size">200MB</property>
+        <!-- Уровень вывода журнала по умолчанию-->
+        <property name="output_log_level">INFO</property>
+
+        <!-- Путь к хранилищу журналов по умолчанию (все уровни журналов)-->
+        <property name="rolling_fileName">${basePath}/all.log</property>
+        <!-- Путь сжатия журнала по умолчанию, журнал, размер которого превышает указанный размер файла, будет автоматически
+        сохранен в папке, созданной параметром «Год», и сжат как архив-->
+        <property name="rolling_filePattern">${basePath}/%d{yyyy-MM}/all-%d{yyyy-MM-dd}-%i.log.gz</property>
+        <!-- В журнале по умолчанию используется тот же тип журнала, количество файлов, которые можно сохранить в одной
+        папке, по умолчанию - 7, если этот атрибут не установлен-->
+        <property name="rolling_max">50</property>
+
+        <!-- Путь хранения по умолчанию для информационных журналов (журналов информационного уровня) -->
+        <property name="info_fileName">${basePath}/info.log</property>
+        <!-- Путь сжатия по умолчанию для информационных журналов. Журналы, размер которых превышает указанный размер файла,
+         будут автоматически сохраняться в папке, созданной параметром «Год», и сжиматься как архив-->
+        <property name="info_filePattern">${basePath}/%d{yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log.gz</property>
+        <!-- Количество информационных журналов, которые по умолчанию могут храниться в одной папке. Если этот атрибут
+        не задан, по умолчанию используется значение 7-->
+        <property name="info_max">10</property>
+
+        <!-- Путь хранения журнала предупреждений по умолчанию (журнал уровня предупреждений) -->
+        <property name="warn_fileName">${basePath}/warnings.log</property>
+        <!-- Предупредить путь сжатия журнала по умолчанию, журнал, размер которого превышает указанный размер файла,
+        будет автоматически сохранен в папке, созданной параметром «Год», и сжат как архив-->
+        <property name="warn_filePattern">${basePath}/%d{yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log.gz</property>
+        <!-- В журнале предупреждений по умолчанию указано число, которое можно сохранить в той же папке. Если этот атрибут
+        не задан, по умолчанию используется значение 7-->
+        <property name="warn_max">10</property>
+
+        <!-- Путь к хранилищу ошибок по умолчанию (журнал уровня ошибок) -->
+        <property name="error_fileName">${basePath}/errors.log</property>
+        <!-- Путь сжатия журнала ошибок по умолчанию, журналы, размер которых превышает указанный размер файла,
+        будут автоматически сохраняться в папке, созданной параметром «Год», и сжиматься как архив-->
+        <property name="error_filePattern">${basePath}/%d{yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log.gz</property>
+        <!-- В журнале ошибок по умолчанию указано количество файлов, которые можно сохранить в одной папке. Если этот
+        атрибут не задан, по умолчанию используется значение 7-->
+        <property name="error_max">10</property>
+
+        <!-- Самый низкий уровень журналов, отображаемых на консоли-->
+        <property name="console_print_level">INFO</property>
+
+    </Properties>
+
+    <!-- Определить appender-->
+    <appenders>
+        <!-- Используется для определения конфигурации вывода на консоль-->
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <!-- Установить консоль только для уровня вывода и выше информации (onMatch), другие отклонить напрямую (onMismatch) -->
+            <ThresholdFilter level="${console_print_level}" onMatch="ACCEPT" onMismatch="DENY"/>
+            <!-- Установите формат вывода, не устанавливайте значение по умолчанию:% m% n-->
+            <PatternLayout pattern="${console_log_pattern}"/>
+        </Console>
+
+        <!-- печатать логи выше уровня, указанного в корне, в файл-->
+        <RollingFile name="RollingFile" fileName="${rolling_fileName}" filePattern="${rolling_filePattern}">
+            <PatternLayout pattern="${log_pattern}"/>
+            <SizeBasedTriggeringPolicy size="${every_file_size}"/>
+            <!-- Установите количество журналов одного типа, которые могут храниться в одной папке. Если этот
+            атрибут не задан, по умолчанию сохраняются 7 файлов.-->
+            <DefaultRolloverStrategy max="${rolling_max}" />
+        </RollingFile>
+
+        <!-- Распечатать журнал уровня INFO в файл-->
+        <RollingFile name="InfoFile" fileName="${info_fileName}" filePattern="${info_filePattern}">
+            <PatternLayout pattern="${log_pattern}"/>
+            <SizeBasedTriggeringPolicy size="${every_file_size}"/>
+            <DefaultRolloverStrategy max="${info_max}" />
+            <Filters>
+                <ThresholdFilter level="WARN" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </RollingFile>
+
+        <!-- Распечатать журнал уровня WARN в файл-->
+        <RollingFile name="WarnFile" fileName="${warn_fileName}" filePattern="${warn_filePattern}">
+            <PatternLayout pattern="${log_pattern}"/>
+            <SizeBasedTriggeringPolicy size="${every_file_size}"/>
+            <DefaultRolloverStrategy max="${warn_max}" />
+            <Filters>
+                <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </RollingFile>
+
+        <!-- Вывести журнал уровня ОШИБКИ в файл-->
+        <RollingFile name="ErrorFile" fileName="${error_fileName}" filePattern="${error_filePattern}">
+            <PatternLayout pattern="${log_pattern}"/>
+            <SizeBasedTriggeringPolicy size="${every_file_size}"/>
+            <DefaultRolloverStrategy max="${error_max}" />
+            <Filters>
+                <ThresholdFilter level="FATAL" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </RollingFile>
+    </appenders>
+
+    <!-- Затем определите регистратор, только тот аппендир, который определит регистратор и представит его,
+    аппендер вступит в силу-->
+    <loggers>
+        <!-- настроить поддержку печати операторов SQL-->
+        <logger name="java.sql" level="debug" additivity="false">
+            <appender-ref ref="Console"/>
+        </logger>
+        <!-- Создать корневой логгер по умолчанию-->
+        <root level="${output_log_level}">
+            <!--<appender-ref ref="RollingFile"/>-->
+            <!--<appender-ref ref="Console"/>-->
+            <appender-ref ref="InfoFile"/>
+            <appender-ref ref="WarnFile"/>
+            <appender-ref ref="ErrorFile"/>
+        </root>
+    </loggers>
+</configuration>

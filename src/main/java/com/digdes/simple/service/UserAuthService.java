@@ -1,8 +1,8 @@
 package com.digdes.simple.service;
 
-import com.digdes.simple.dao.EmployeeDAO;
-import com.digdes.simple.model.EmployeeModel;
-import com.digdes.simple.model.EmployeeStatus;
+import com.digdes.simple.dao.employee.EmployeeDAO;
+import com.digdes.simple.model.employee.EmployeeModel;
+import com.digdes.simple.model.employee.EmployeeStatus;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,6 +20,7 @@ public class UserAuthService implements UserDetailsService {
 
     private final PassEncoder passEncoder;
 
+    //Метод возвращает учетную запись, пароль и список разрешений (пока пустой) пользователя
     @Override
     public UserDetails loadUserByUsername(String account) throws UsernameNotFoundException {
             EmployeeModel em = employeeDAO.getByAccount(account);
@@ -28,6 +29,7 @@ public class UserAuthService implements UserDetailsService {
                 Collections.emptyList());
     }
 
+    //метод создает учетную запись администратора, если таковая отсутсвует
     @PostConstruct
     public void initAdmin() {
         EmployeeModel em=employeeDAO.getByAccount("admin");

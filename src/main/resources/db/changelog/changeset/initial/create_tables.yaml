@@ -1,0 +1,135 @@
+databaseChangeLog:
+- changeSet:
+    id: 1685330309497
+    author: Admin
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: employees_pkey
+            name: id
+            type: BIGINT
+        - column:
+            name: account
+            type: VARCHAR(255)
+        - column:
+            name: email
+            type: VARCHAR(255)
+        - column:
+            name: firstname
+            type: VARCHAR(255)
+        - column:
+            name: lastname
+            type: VARCHAR(255)
+        - column:
+            name: password
+            type: VARCHAR(255)
+        - column:
+            name: position
+            type: VARCHAR(255)
+        - column:
+            name: status
+            type: VARCHAR(255)
+        - column:
+            name: surname
+            type: VARCHAR(255)
+        - column:
+            name: uid
+            type: VARCHAR(255)
+        tableName: employees
+- changeSet:
+    id: 1685330309498
+    author: Admin
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: tasks_pkey
+            name: id
+            type: BIGINT
+        - column:
+            name: change_date
+            type: date
+        - column:
+            name: creation_date
+            type: date
+        - column:
+            name: details
+            type: VARCHAR(255)
+        - column:
+            name: execution_date
+            type: date
+        - column:
+            name: labor_cost
+            type: INTEGER
+        - column:
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: status
+            type: VARCHAR(255)
+        - column:
+            name: author_id
+            type: BIGINT
+        - column:
+            name: employee_id
+            type: BIGINT
+        tableName: tasks
+- changeSet:
+    id: 1685330309499
+    author: Admin
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: members_pkey
+            name: empid
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: members_pkey
+            name: prjcode
+            type: VARCHAR(255)
+        - column:
+            name: role
+            type: VARCHAR(255)
+        tableName: members
+- changeSet:
+    id: 1685330309500
+    author: Admin (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: projects_pkey
+            name: code
+            type: VARCHAR(255)
+        - column:
+            name: description
+            type: VARCHAR(255)
+        - column:
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: status
+            type: VARCHAR(255)
+        - column:
+            name: uuid
+            type: VARCHAR(255)
+        tableName: projects

@@ -1,8 +1,7 @@
 package com.digdes.simple.mapping.employee;
 
 import com.digdes.simple.dto.employee.EmployeeCrtDTO;
-import com.digdes.simple.model.EmployeeModel;
-import com.digdes.simple.model.EmployeeStatus;
+import com.digdes.simple.model.employee.EmployeeModel;
 import org.springframework.util.ObjectUtils;
 
 

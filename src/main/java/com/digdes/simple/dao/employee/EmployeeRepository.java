@@ -1,6 +1,6 @@
-package com.digdes.simple.dao;
+package com.digdes.simple.dao.employee;
 
-import com.digdes.simple.model.EmployeeModel;
+import com.digdes.simple.model.employee.EmployeeModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

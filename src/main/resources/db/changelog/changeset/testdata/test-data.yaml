@@ -8,10 +8,6 @@ databaseChangeLog:
         - loadData:
             columns:
               - column:
-                  header: id
-                  name: id
-                  type: BIGINT
-              - column:
                   header: uid
                   name: uid
                   type: VARCHAR

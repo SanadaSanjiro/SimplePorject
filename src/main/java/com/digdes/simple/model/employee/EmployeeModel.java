@@ -1,8 +1,11 @@
-package com.digdes.simple.model;
+package com.digdes.simple.model.employee;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.io.Serializable;
 
 //Класс Сотрудник
 
@@ -10,12 +13,14 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="employees")
-public class EmployeeModel {
+public class EmployeeModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String uid;
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
+    private String uid; //не используется, заложено для следующих версий программы
     @Column(name="firstname")
     private String firstName;
     @Column(name="lastname")
@@ -35,7 +40,6 @@ public class EmployeeModel {
     public String toString() {
         return "\nEmployee{" +
                 "id=" + id +
-                ", uid='" + uid + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", surName='" + surName + '\'' +

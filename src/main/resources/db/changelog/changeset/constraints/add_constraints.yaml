@@ -1,0 +1,35 @@
+databaseChangeLog:
+- changeSet:
+    id: 1685330309497-11
+    author: Admin
+    runOnChange: true
+    changes:
+    -  addNotNullConstraint:
+        columnName: lastname
+        tableName: employees
+- changeSet:
+    id: 1685330309497-12
+    author: Admin
+    runOnChange: true
+    changes:
+    -  addUniqueConstraint:
+        columnNames: account
+        constraintName: account_constraint
+        tableName: employees
+- changeSet:
+    id: 1685330309497-13
+    author: Admin
+    runOnChange: true
+    changes:
+    -  addNotNullConstraint:
+        columnName: firstname
+        tableName: employees
+- changeSet:
+    id: 1685330309497-14
+    author: Admin
+    runOnChange: true
+    changes:
+    -  addNotNullConstraint:
+        columnName: status
+        tableName: employees
+        

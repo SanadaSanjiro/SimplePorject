@@ -3,7 +3,7 @@ package com.digdes.simple.mapping.employee;
 //Класс для преобразования ДТО в модель при редактировании данных сотрудников
 
 import com.digdes.simple.dto.employee.EmployeeUpdDTO;
-import com.digdes.simple.model.EmployeeModel;
+import com.digdes.simple.model.employee.EmployeeModel;
 import org.springframework.util.ObjectUtils;
 
 public class EmployeeUpdMapper {
@@ -11,9 +11,6 @@ public class EmployeeUpdMapper {
         EmployeeModel model = new EmployeeModel();
         if (!ObjectUtils.isEmpty(dto.getId())) {
             model.setId(dto.getId());
-        }
-        if (!ObjectUtils.isEmpty(dto.getUid())) {
-            model.setUid(dto.getUid());
         }
         if (!ObjectUtils.isEmpty(dto.getFirstname())) {
             model.setFirstName(dto.getFirstname());
