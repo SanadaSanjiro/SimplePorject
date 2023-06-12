@@ -1,14 +1,14 @@
 package com.digdes.simple.dao.member;
 
-import com.digdes.simple.dto.project.ProjectDTO;
-import com.digdes.simple.model.employee.EmployeeModel;
 import com.digdes.simple.model.member.MemberModel;
 import com.digdes.simple.model.member.MembersKey;
+import com.digdes.simple.model.project.ProjectModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -17,9 +17,23 @@ public class MemberDAO {
     @Autowired
     private MemberRepository memberRepository;
 
+    public MemberModel create(MemberModel model) {
+        try {
+            return memberRepository.save(model);
+        } catch (Exception e) {
+            //e.printStackTrace();
+        }
+        return null;
+    }
+
     public MemberModel getById(MembersKey key) {
         try {
-            return memberRepository.findById(key).get();
+            Optional<MemberModel> model = memberRepository.findById(key);
+            if (model.isPresent()) {
+                return memberRepository.findById(key).get();
+            } else {
+                return null;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -37,9 +51,10 @@ public class MemberDAO {
         return null;
     }
 
-    public List<MemberModel> getAllByCode(String code) {
+    public List<MemberModel> getByProject(ProjectModel projectModel) {
         try {
-            return memberRepository.findAll();
+            List<MemberModel> members = memberRepository.getByProject(projectModel).get();
+            return members;
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -4,7 +4,7 @@ import com.digdes.simple.dto.employee.EmployeeViewDTO;
 import com.digdes.simple.model.employee.EmployeeModel;
 import org.springframework.util.ObjectUtils;
 
-//Класс для преобразования модели в ДТО для возврата в качестве результатов запроса
+//Класс для преобразования модели в ДТО для
 //Передает все поля модели за исключением пароля
 
 public class EmployeeViewMapper {
@@ -32,14 +32,7 @@ public class EmployeeViewMapper {
             dto.setEmail(model.getEMail());
         }
         if (!ObjectUtils.isEmpty(model.getStatus())) {
-            switch (model.getStatus().name()) {
-                case ("ACTIVE") :
-                    dto.setStatus("ACTIVE");
-                    break;
-                case ("DELETED"):
-                    dto.setStatus("DELETED");
-                    break;
-            }
+            dto.setStatus(model.getStatus().toString());
         }
         return dto;
     }

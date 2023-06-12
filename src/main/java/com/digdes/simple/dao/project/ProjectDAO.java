@@ -1,5 +1,7 @@
 package com.digdes.simple.dao.project;
 
+import com.digdes.simple.dao.employee.EmployeeSpecification;
+import com.digdes.simple.dto.project.ProjectSrchDTO;
 import com.digdes.simple.model.project.ProjectModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +17,22 @@ public class ProjectDAO {
     @Autowired
     private ProjectRepository projectRepository;
 
+    public ProjectModel getByCode(String code) {
+        try {
+            return projectRepository.getByCode(code).get();
+        } catch (Exception e) {
+            //e.printStackTrace();
+        }
+        return null;
+    }
+
     public ProjectModel create(ProjectModel projectModel) {
         try {
             return projectRepository.save(projectModel);
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
+        System.out.println("ProjectDAO возвращает null");
         return null;
     }
 
@@ -28,7 +40,7 @@ public class ProjectDAO {
         try {
             return projectRepository.save(projectModel);
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return null;
     }
@@ -37,13 +49,27 @@ public class ProjectDAO {
         try {
             return projectRepository.save(projectModel);
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return null;
     }
 
-    public List<ProjectModel> getFilterd() {
+    public List<ProjectModel> getFiltered(ProjectSrchDTO dto) {
+        try {
+            return projectRepository.findAll(ProjectSpecification.getFilters(dto));
+        } catch (Exception e) {
+            //e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<ProjectModel> getAll() {
         List<ProjectModel> list = new ArrayList<>();
-        return list;
+        try {
+            return projectRepository.findAll();
+        } catch (Exception e) {
+            //e.printStackTrace();
+        }
+        return null;
     }
 }

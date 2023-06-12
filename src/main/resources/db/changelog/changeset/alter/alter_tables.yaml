@@ -1,0 +1,25 @@
+databaseChangeLog:
+- changeSet:
+    id: 1684999823507-1
+    author: Admin
+    runOnChange: true
+    changes:
+    - addColumn:
+        tableName: tasks
+        columns:
+        - column:
+            name: prjcode
+            type: VARCHAR(255)
+- changeSet:
+    id: 1684999823507-2
+    author: Admin
+    runOnChange: true
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: prjcode
+        baseTableName: tasks
+        constraintName:  fk_task_project
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: code
+        referencedTableName: projects

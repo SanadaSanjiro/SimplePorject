@@ -1,0 +1,32 @@
+databaseChangeLog:
+- changeSet:
+      id: 1684999823506-2
+      author: Admin
+      runOnChange: true
+      contexts: test
+      changes:
+        - loadData:
+            columns:
+              - column:
+                  header: code
+                  name: code
+                  type: VARCHAR
+              - column:
+                  header: name
+                  name: name
+                  type: VARCHAR
+              - column:
+                  header: description
+                  name: description
+                  type: VARCHAR
+              - column:
+                  header: status
+                  name: status
+                  type: VARCHAR
+            commentLineStartsWith: '#'
+            encoding: UTF-8
+            file: data/project.csv
+            quotchar: '"'
+            separator: ';'
+            relativeToChangelogFile: true
+            tableName: projects

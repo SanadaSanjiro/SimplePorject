@@ -1,14 +1,14 @@
 package com.digdes.simple.mapping.member;
 
-
-// Преобразование модели в DTO и обратно с полным набором полей.
-
 import com.digdes.simple.dto.member.MemberDTO;
 import com.digdes.simple.model.member.MemberModel;
 import com.digdes.simple.model.member.MembersKey;
 import com.digdes.simple.model.member.Role;
+import org.springframework.http.HttpStatus;
 import org.springframework.util.ObjectUtils;
+import org.springframework.web.server.ResponseStatusException;
 
+// Преобразование модели в DTO и обратно с полным набором полей.
 public class MemberMapper {
     public static MemberModel map (MemberDTO dto) {
         MemberModel model = new MemberModel();
@@ -17,6 +17,7 @@ public class MemberMapper {
             MembersKey mk = new MembersKey();
             mk.setEmpid(dto.getEmpid());
             mk.setPrjcode(dto.getPrjcode());
+            model.setId(mk);
         }
         if (!ObjectUtils.isEmpty(dto.getRole())) {
             switch (dto.getRole()) {
@@ -25,13 +26,16 @@ public class MemberMapper {
                     break;
                 case ("ANALYST"):
                     model.setRole(Role.ANALYST);
-                    ;
                     break;
                 case ("DEVELOPER"):
                     model.setRole(Role.DEVELOPER);
                     break;
                 case ("TESTER"):
                     model.setRole(Role.TESTER);
+                    break;
+                default: {
+                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+                }
             }
         }
         return model;
@@ -45,20 +49,7 @@ public class MemberMapper {
             dto.setEmpid(mk.getEmpid());
         }
         if (!ObjectUtils.isEmpty(model.getRole())) {
-            switch (model.getRole().name()) {
-                case ("MANAGER") :
-                    dto.setRole("MANAGER");
-                    break;
-                case ("ANALYST"):
-                    dto.setRole("ANALYST");
-                    break;
-                case ("DEVELOPER") :
-                    dto.setRole("DEVELOPER");
-                    break;
-                case ("TESTER"):
-                    dto.setRole("TESTER");
-                    break;
-            }
+            dto.setRole(model.getRole().toString());
         }
         return dto;
     }

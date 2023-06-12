@@ -7,18 +7,11 @@ import java.time.LocalDate;
 
 @Data
 @Schema(description = "Задача")
-public class TaskDTO {
-    Long id;
-    @Schema (description = "Код проекта")
-    String code;
+public class TaskSrchDTO {
     @Schema (description = "Наименование задачи")
     String name;
-    @Schema (description = "Описание задачи")
-    String details;
     @Schema (description = "id исполнителя задачи")
     Long employee;
-    @Schema (description = "Трудозатраты")
-    int laborCost;
     @Schema (description = "Крайний срок исполнения")
     LocalDate executionDate;
     @Schema (description = "Статус задачи")
@@ -27,6 +20,4 @@ public class TaskDTO {
     Long author;
     @Schema (description = "Дата создания")
     LocalDate creationDate;
-    @Schema (description = "Дата изменения")
-    LocalDate changeDate;
 }

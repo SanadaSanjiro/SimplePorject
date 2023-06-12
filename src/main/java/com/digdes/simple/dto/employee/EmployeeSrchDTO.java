@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 @Schema (description = "Поиск сотрудников")
 public class EmployeeSrchDTO {
+    @Schema (description = "Имя")
     String firstname;
     @Schema (description = "Фамилия")
     String lastname;

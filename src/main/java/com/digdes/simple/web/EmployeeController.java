@@ -1,7 +1,7 @@
 package com.digdes.simple.web;
 
 import com.digdes.simple.dto.employee.*;
-import com.digdes.simple.service.EmployeeService;
+import com.digdes.simple.service.employee.EmployeeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/employee")
+@RequestMapping("/employees")
 @Tag(name= "EmployeeController", description = "Контроллер сотрудников")
 public class EmployeeController {
 
@@ -52,7 +52,6 @@ public class EmployeeController {
     @PutMapping(value = "/filter", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public List<EmployeeViewDTO> getFiltered(@RequestBody EmployeeSrchDTO dto) {
-        System.out.println(dto);
         return employeeService.getFiltered(dto);
     }
 }

@@ -24,7 +24,9 @@ public class UserAuthService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String account) throws UsernameNotFoundException {
             EmployeeModel em = employeeDAO.getByAccount(account);
-            if (em==null) {throw new UsernameNotFoundException("User not found");}
+            if (em==null||em.getStatus()==EmployeeStatus.DELETED) {
+                throw new UsernameNotFoundException("User not found");
+            }
         return new org.springframework.security.core.userdetails.User(em.getAccount(), em.getPassword(),
                 Collections.emptyList());
     }

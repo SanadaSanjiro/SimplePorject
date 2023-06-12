@@ -7,7 +7,9 @@ import lombok.Data;
 @Data
 @Schema (description = "Отображаемые данные сотрудника")
 public class EmployeeViewDTO {
+    @Schema (description = "Уникальный id. Присваивается системой.")
     Long id;
+    @Schema (description = "Имя")
     String firstname;
     @Schema (description = "Фамилия")
     String lastname;

@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 @Schema (description = "Редактируемый сотрудник")
 public class EmployeeUpdDTO {
+    @Schema (description = "Уникальный id. Присваивается системой.")
     Long id;
     @Schema (description = "Имя")
     String firstname;

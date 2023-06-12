@@ -29,4 +29,11 @@ public class MemberModel implements Serializable {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @Override
+    public String toString() {
+        return "MemberModel{"+"\nemployee=" + employee +
+                ",\nproject=" + project +
+                ",\nrole=" + role +
+                '}';
+    }
 }

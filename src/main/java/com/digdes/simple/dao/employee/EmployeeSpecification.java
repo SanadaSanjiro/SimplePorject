@@ -13,19 +13,19 @@ import java.util.List;
 
 public class EmployeeSpecification {
 
-    public static Specification<EmployeeModel> getFilteres (EmployeeSrchDTO employeeDTO) {
+    public static Specification<EmployeeModel> getFilters(EmployeeSrchDTO employeeDTO) {
         return ((root, query, criteriaBuilder ) -> {
             List<Predicate> predicates = new ArrayList<>();
             if(!ObjectUtils.isEmpty(employeeDTO.getFirstname()))
                 predicates.add(criteriaBuilder.like(root.get("firstName"), "%"+employeeDTO.getFirstname()+"%"));
             if(!ObjectUtils.isEmpty(employeeDTO.getLastname()))
-                predicates.add(criteriaBuilder.equal(root.get("lastName"), employeeDTO.getLastname()));
+                predicates.add(criteriaBuilder.like(root.get("lastName"), "%"+employeeDTO.getLastname()+"%"));
             if(!ObjectUtils.isEmpty(employeeDTO.getSurname()))
-                predicates.add(criteriaBuilder.equal(root.get("surName"), employeeDTO.getSurname()));
+                predicates.add(criteriaBuilder.like(root.get("surName"), "%"+employeeDTO.getSurname()+"%"));
             if(!ObjectUtils.isEmpty(employeeDTO.getAccount()))
-                predicates.add(criteriaBuilder.equal(root.get("account"), employeeDTO.getAccount()));
+                predicates.add(criteriaBuilder.like(root.get("account"), "%"+employeeDTO.getAccount()+"%"));
             if(!ObjectUtils.isEmpty(employeeDTO.getEmail()))
-                predicates.add(criteriaBuilder.equal(root.get("eMail"), employeeDTO.getEmail()));
+                predicates.add(criteriaBuilder.like(root.get("eMail"), "%"+employeeDTO.getEmail()+"%"));
             predicates.add(criteriaBuilder.equal(root.get("status"), EmployeeStatus.ACTIVE));
             if (CollectionUtils.isEmpty(predicates))
                 return query.where().getRestriction();

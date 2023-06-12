@@ -2,6 +2,8 @@ databaseChangeLog:
   - includeAll:
       path: db\changelog\changeset\initial
   - includeAll:
+      path: db\changelog\changeset\alter
+  - includeAll:
       path: db\changelog\changeset\constraints
   - includeAll:
       path: db\changelog\changeset\testdata

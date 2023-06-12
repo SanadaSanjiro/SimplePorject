@@ -10,6 +10,6 @@ public class MemberDTO {
     private String prjcode;
     @Schema (description = "id сотрудника")
     private Long empid;
-    @Schema (description = "Роль в команде")
+    @Schema (description = "Роль в команде. Возможные значения: MANAGER, ANALYST, DEVELOPER, TESTER")
     private String role;
 }

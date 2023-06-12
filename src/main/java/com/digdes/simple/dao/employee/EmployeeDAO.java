@@ -19,7 +19,7 @@ public class EmployeeDAO {
         try {
             return employeeRepository.findById(id).get();
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return null;
     }
@@ -28,7 +28,7 @@ public class EmployeeDAO {
         try {
             return employeeRepository.save(employeeModel);
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return null;
     }
@@ -37,7 +37,7 @@ public class EmployeeDAO {
         try {
             return employeeRepository.save(employeeModel);
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return null;
     }
@@ -46,7 +46,7 @@ public class EmployeeDAO {
         try {
             return employeeRepository.findAll();
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return null;
     }
@@ -66,9 +66,9 @@ public class EmployeeDAO {
 
     public List<EmployeeModel> getFiltered(EmployeeSrchDTO dto) {
         try {
-            return employeeRepository.findAll(EmployeeSpecification.getFilteres(dto));
+            return employeeRepository.findAll(EmployeeSpecification.getFilters(dto));
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
      return null;
     }

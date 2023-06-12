@@ -20,13 +20,13 @@ class EmployeeSpecificationTest {
         dto.setSurname(surname);
         dto.setAccount(account);
         dto.setEmail(email);
-        Assertions.assertNotNull(EmployeeSpecification.getFilteres(dto));
+        Assertions.assertNotNull(EmployeeSpecification.getFilters(dto));
     }
 
     @Test
     @DisplayName("Test Specification with empty DTO")
     public void getFiltersEmployee_EmptyDTO() {
         EmployeeSrchDTO dto = new EmployeeSrchDTO();
-        Assertions.assertNotNull(EmployeeSpecification.getFilteres(dto));
+        Assertions.assertNotNull(EmployeeSpecification.getFilters(dto));
     }
 }

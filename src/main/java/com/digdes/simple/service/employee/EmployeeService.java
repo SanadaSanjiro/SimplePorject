@@ -1,4 +1,4 @@
-package com.digdes.simple.service;
+package com.digdes.simple.service.employee;
 
 import com.digdes.simple.dto.employee.*;
 
